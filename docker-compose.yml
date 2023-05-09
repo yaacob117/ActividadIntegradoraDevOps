@@ -6,12 +6,12 @@ networks:
 
 
 services:
-  db:
+  mysql:
     image: mysql:latest
     container_name: mysql
     tty: true
     volumes:
-      - db_data:/var/lib/mysql
+      - ./var/libclea/mysql/:/var/lib/mysql
     restart: always
     environment:
        MYSQL_ROOT_PASSWORD: wordpress
@@ -25,16 +25,16 @@ services:
 
   server:
     depends_on:
-      - db
+      - mysql
     image: wordpress:latest
     container_name: wordpress
     volumes:
       - /.var/www/html/:/var/www/html
     environment:
-       WORDPRESS_DB_USER: yaacob
-       WORDPRESS_DB_PASSWORD: password
-       WORDPRESS_DB_NAME: wordpress
-       WORDPRESS_DB_HOST: ActIntegradora-net
+       WORDPRESS_mysql_USER: yaacob
+       WORDPRESS_mysql_PASSWORD: password
+       WORDPRESS_mysql_NAME: wordpress
+       WORDPRESS_mysql_HOST: ActIntegradora-net
     ports:
       - "8000:80"
     restart: always
@@ -45,11 +45,11 @@ services:
     container_name: phpmyadmin_integradora
     environment:
        MYSQL_ROOT_PASSWORD: yaacob
-       PMA_HOST: db
+       PMA_HOST: mysql
     depends_on:
-      - db
+      - mysql
     networks:
       - ActIntegradora-net
 
 volumes:
-  db_data:
+  mysql_data:
