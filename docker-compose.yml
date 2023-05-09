@@ -1,0 +1,60 @@
+version: "3"
+networks:
+    ActIntegradora-net:
+      driver: bridge 
+
+
+
+services:
+  db:
+    image: mysql:latest
+    container_name: mysql
+    tty: true
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD: wordpress
+      - MYSQL_DATABASE: wordpress
+      - MYSQL_USER: wordpress
+      - MYSQL_PASSWORD: wordpress
+    networks:
+      - ActIntegradora-net
+  
+  
+
+  server:
+    depends_on:
+      - db
+    image: wordpress:latest
+    container_name: wordpress
+    volumes:
+      -"/.var/www/html/:/var/www/html"
+    environment:
+      - WORDPRESS_DB_USER: yaacob
+      - WORDPRESS_DB_PASSWORD: password
+      - WORDPRESS_DB_NAME: wordpress
+      - WORDPRESS_DB_HOST: ActIntegradora-net
+    ports:
+      - "8000:80"
+    restart: always
+    environment:
+      - WORDPRESS_DB_HOST: db:3306
+      - WORDPRESS_DB_USER: wordpress
+      - WORDPRESS_DB_PASSWORD: wordpress
+
+
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin_integradora
+    environment:
+      - MYSQL_ROOT_PASSWORD: yaacob
+      - PMA_HOST: db
+    depends_on:
+      - db
+    networks:
+      - ActIntegradora-net
+
+volumes:
+  db_data:
