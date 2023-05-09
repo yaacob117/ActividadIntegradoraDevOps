@@ -39,8 +39,6 @@ services:
        WORDPRESS_mysql_PASSWORD: password
        WORDPRESS_mysql_NAME: wordpress
        WORDPRESS_mysql_HOST: ActIntegradora-net
-    ports:
-      - "8000:80"
     restart: always
 
 
