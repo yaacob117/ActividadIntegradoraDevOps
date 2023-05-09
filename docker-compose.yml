@@ -1,11 +1,11 @@
 networks:
-    actIntegradora-net:
+    ds-wordpress-6.1.1-net:
        driver: bridge 
 
 services:
     mysql:
         image: mysql:5.7
-        container_name: mysqll
+        container_name: ds-wordpress-6.1.1-mysql
         tty: true
         ports:
             - "4208:3306"
@@ -17,13 +17,13 @@ services:
             MYSQL_USER: miusuario
             MYSQL_PASSWORD: mipassword
         networks:
-            - actIntegradora-net
+            - ds-wordpress-6.1.1-net
  
   
 
     server:
         image: wordpress:latest
-        container_name: wordpress
+        container_name: ds-wordpress-6.1.1
         ports:
             - "4282:80"
         volumes:
@@ -32,11 +32,11 @@ services:
             WORDPRESS_DB_USER: yaacob
             WORDPRESS_DB_PASSWORD: password
             WORDPRESS_DB_NAME: wordpress
-            WORDPRESS_DB_HOST: mysqll
+            WORDPRESS_DB_HOST: ds-wordpress-6.1.1-mysql
         depends_on:
             - mysql
         networks:
-            - actIntegradora-net
+            - ds-wordpress-6.1.1-net
 
 
     phpmyadmin:
@@ -45,9 +45,9 @@ services:
         ports:
              - "4283:80"
         environment:
-            PMA_HOST: mysqll
+            PMA_HOST: ds-wordpress-6.1.1-mysql
             MYSQL_ROOT_PASSWORD: 1234
         depends_on:
               - mysql
         networks:
-            - actIntegradora-net
+            - ds-wordpress-6.1.1-net
