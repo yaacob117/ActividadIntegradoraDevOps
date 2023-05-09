@@ -1,5 +1,5 @@
 networks:
-    ActIntegradora-net:
+    actIntegradora-net:
        driver: bridge 
 
 services:
@@ -32,11 +32,11 @@ services:
             WORDPRESS_DB_USER: yaacob
             WORDPRESS_DB_PASSWORD: password
             WORDPRESS_DB_NAME: wordpress
-            WORDPRESS_DB_HOST: ActIntegradora-net
+            WORDPRESS_DB_HOST: actIntegradora-net
         depends_on:
             - mysql
         networks:
-            - ActIntegradora-net
+            - actIntegradora-net
 
 
     phpmyadmin:
