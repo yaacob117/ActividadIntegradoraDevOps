@@ -14,7 +14,7 @@ services:
         environment:
             MYSQL_ROOT_PASSWORD: 1234
             MYSQL_DATABASE: wordpress
-            MYSQL_USER: yaacob
+            MYSQL_USER: miusuario
             MYSQL_PASSWORD: mipassword
         networks:
             - ds-wordpress-6.1.1-net
@@ -29,8 +29,8 @@ services:
         volumes:
             - "./var/www/html/:/var/www/html"
         environment:
-            WORDPRESS_DB_USER: yaacob
-            WORDPRESS_DB_PASSWORD: 1234
+            WORDPRESS_DB_USER: miusuario
+            WORDPRESS_DB_PASSWORD: mipassword
             WORDPRESS_DB_NAME: wordpress
             WORDPRESS_DB_HOST: ds-wordpress-6.1.1-mysql
         depends_on:
