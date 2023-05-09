@@ -9,6 +9,8 @@ services:
   mysql:
     image: mysql:latest
     container_name: mysql
+    ports:
+      - "4208:3306"
     tty: true
     volumes:
       - ./var/libclea/mysql/:/var/lib/mysql
@@ -28,6 +30,8 @@ services:
       - mysql
     image: wordpress:latest
     container_name: wordpress
+    ports:
+      - "4282:80"
     volumes:
       - /.var/www/html/:/var/www/html
     environment:
@@ -43,6 +47,8 @@ services:
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     container_name: phpmyadmin_integradora
+    ports:
+      - "4283:80"
     environment:
        MYSQL_ROOT_PASSWORD: yaacob
        PMA_HOST: mysql
