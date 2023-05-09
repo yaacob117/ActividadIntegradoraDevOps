@@ -10,7 +10,7 @@ services:
     image: mysql:latest
     container_name: mysql
     ports:
-      - "8000:3306"
+      - "4208:3306"
     tty: true
     volumes:
       - ./var/libclea/mysql/:/var/lib/mysql
