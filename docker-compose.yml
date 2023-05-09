@@ -31,10 +31,10 @@ services:
     volumes:
       - /.var/www/html/:/var/www/html
     environment:
-      - WORDPRESS_DB_USER: yaacob
-      - WORDPRESS_DB_PASSWORD: password
-      - WORDPRESS_DB_NAME: wordpress
-      - WORDPRESS_DB_HOST: ActIntegradora-net
+       WORDPRESS_DB_USER: yaacob
+       WORDPRESS_DB_PASSWORD: password
+       WORDPRESS_DB_NAME: wordpress
+       WORDPRESS_DB_HOST: ActIntegradora-net
     ports:
       - "8000:80"
     restart: always
