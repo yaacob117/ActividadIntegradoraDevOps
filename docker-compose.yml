@@ -21,7 +21,7 @@ services:
        MYSQL_USER: wordpress
        MYSQL_PASSWORD: wordpress
     networks:
-      - ActIntegradora
+      - ActIntegradora-net
   
   
 
@@ -38,7 +38,7 @@ services:
        WORDPRESS_mysql_USER: yaacob
        WORDPRESS_mysql_PASSWORD: password
        WORDPRESS_mysql_NAME: wordpress
-       WORDPRESS_mysql_HOST: ActIntegradora
+       WORDPRESS_mysql_HOST: ActIntegradora-net
     restart: always
 
 
@@ -53,7 +53,7 @@ services:
     depends_on:
       - mysql
     networks:
-      - ActIntegradora
+      - ActIntegradora-net
 
 volumes:
   mysql_data:
