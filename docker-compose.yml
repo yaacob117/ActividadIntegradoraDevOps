@@ -1,6 +1,6 @@
 networks:
     ds-wordpress-6.1.1-net:
-       driver: bridge 
+        driver: bridge
 
 services:
     mysql:
@@ -45,6 +45,6 @@ services:
             PMA_HOST: ds-wordpress-6.1.1-mysql
             MYSQL_ROOT_PASSWORD: 1234
         depends_on:
-              - mysql
+            - mysql
         networks:
             - ds-wordpress-6.1.1-net
