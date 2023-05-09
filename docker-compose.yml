@@ -27,7 +27,7 @@ services:
         ports:
             - "4282:80"
         volumes:
-            - "/.var/www/html/:/var/www/html"
+            - "./var/www/html/:/var/www/html"
         environment:
             WORDPRESS_DB_USER: yaacob
             WORDPRESS_DB_PASSWORD: password
