@@ -5,7 +5,7 @@ networks:
 services:
     mysql:
         image: mysql:5.7
-        container_name: mysql-integradora
+        container_name: mysql
         tty: true
         ports:
             - "4208:3306"
@@ -23,7 +23,7 @@ services:
 
     server:
         image: wordpress:latest
-        container_name: wordpress-integradora
+        container_name: wordpress
         ports:
             - "4282:80"
         volumes:
@@ -32,9 +32,9 @@ services:
             WORDPRESS_DB_USER: yaacob
             WORDPRESS_DB_PASSWORD: password
             WORDPRESS_DB_NAME: wordpress
-            WORDPRESS_DB_HOST: mysql-integradora
+            WORDPRESS_DB_HOST: mysql
         depends_on:
-            - mysql-integradora
+            - mysql
         networks:
             - actIntegradora-net
 
@@ -45,9 +45,9 @@ services:
         ports:
              - "4283:80"
         environment:
-            PMA_HOST: mysql-integradora
+            PMA_HOST: mysql
             MYSQL_ROOT_PASSWORD: 1234
         depends_on:
-              - mysql-integradora
+              - mysql
         networks:
             - actIntegradora-net
