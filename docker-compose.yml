@@ -35,10 +35,10 @@ services:
             - mysql
         networks:
             - ds-wordpress-6.1.1-net
-            
+
     phpmyadmin:
         image: phpmyadmin/phpmyadmin
-        container_name: phpmyadmin_integradora
+        container_name: ds-phpmyadmin
         ports:
              - "4283:80"
         environment:
